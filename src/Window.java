@@ -14,10 +14,13 @@ public class Window {
 	private JPanel contentPane;
 	private JPanel Menu;
 	private JLabel backgroundImg;
+	private BoardPanel board;
+	private GameState thisState;
 
 	public Window() {
-
-
+		thisState = new GameState();
+		board = new BoardPanel();
+		
 		frame = new JFrame("Othello");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		contentPane = new JPanel();
@@ -28,17 +31,19 @@ public class Window {
 		contentPane.setPreferredSize(new Dimension(1600,900));
 		
 		backgroundImg = new JLabel(new ImageIcon("img/intended GUI.png"));
-		contentPane.add(backgroundImg);
+		contentPane.add(board);
 		frame.pack();
-		frame.setResizable(false);
+		frame.setResizable(true);
 
 		frame.setLocationRelativeTo(null);
 		
-		contentPane.addMouseListener(new MouseListener()
+		board.addMouseListener(new MouseListener()
 		{
 			public void mouseClicked(MouseEvent e) {
 				//detect Cell clicked
 					//place piece
+				/*frame.repaint();
+				board.repaint(thisState.getCellArray());*/
 			}
 			public void mouseEntered(MouseEvent e) {}
 			public void mouseExited(MouseEvent e) {}
