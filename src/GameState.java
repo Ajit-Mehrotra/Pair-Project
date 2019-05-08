@@ -73,12 +73,9 @@ public class GameState {
 
 		/*if anything goes wrong, make sure to check over here for any intialization issues. 
 		It was saying for all of these variables that they might not have been intialized*/
-		boolean isPlaceableHorizontal = false;
-		boolean isPlaceableVertical = false;
-		boolean isPlaceableIncline = false;
-		boolean isPlaceableDecline = false;
-		boolean isPlaceableInclineOrDecline = false;
+	
 
+		int playerTurn = playerTurn(turn);
 
 		//creates a new array and sets contents in that array equal to cellArray's states
 		for(int rw = 0; rw < 8; rw ++) {
@@ -134,7 +131,7 @@ public class GameState {
             }
       
 			for(int a = 0; a < 8; a++) {
-				if(a < 7 && (row+a > 7 || col+a > 7)) {
+				if(a < 7 && (row+a > 8 || col+a > 7)) {
 					if(currentBoard[row - (7-a)][col - (7-a)] == playerTurn(!turn)) {
 						return true;
 					}
