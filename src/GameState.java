@@ -87,7 +87,7 @@ public class GameState {
 
 		// REMEBER TO ADD THIS LINE OF CODE, IF THE STATUS OF THE POTENTIAL PIECE IS NOT EXMPTY, RETURN FALSE
 		if(potentialCell.getState() == 0 ) {
-// what the cuk
+
       
       // If it contains same piece vertically
             for (int a = 0; a < 8; a++) {

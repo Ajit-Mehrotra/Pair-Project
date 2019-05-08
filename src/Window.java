@@ -3,20 +3,22 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Window {
 
 	private JFrame frame;
 	private JPanel contentPane;
-	private JPanel Menu;
-	private JLabel backgroundImg;
+	
+	private JButton reset;
+	private JButton forfeit;
+	private JButton versusHumanOrComputer;
+	
 	private BoardPanel board;
 	private GameState state;
-	private JLabel score;
+
 
 	public Window() {
 		state = new GameState();
@@ -24,8 +26,17 @@ public class Window {
 		frame = new JFrame("Othello");
 		contentPane = new JPanel();
 
+		reset = new JButton("Reset");
+		forfeit= new JButton("forfeit");
+		versusHumanOrComputer = new JButton("Versus");
+		
 		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.Y_AXIS));
 		contentPane.setPreferredSize(new Dimension(1600,900));
+		
+		contentPane.add(reset);
+		contentPane.add(forfeit);
+		contentPane.add(versusHumanOrComputer);
+		
 		contentPane.add(board);
 
 
@@ -37,7 +48,7 @@ public class Window {
 		frame.setLocationRelativeTo(null);
 
 		state.setTurn(true);
-		contentPane.addMouseListener(new MouseListener()
+		board.addMouseListener(new MouseListener()
 		{
 			public void mouseClicked(MouseEvent e) {	
 			}
