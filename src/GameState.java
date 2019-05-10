@@ -7,6 +7,7 @@ public class GameState {
 	int [][] currentBoard = new int[8][8];	
 
 
+
 	//Constructor
 	GameState() {
 		for(int a = 0;a < 8; a++) {
@@ -152,6 +153,31 @@ public class GameState {
 			return false;
 		}
 	
+	}
+	
+	
+	
+	public int PlayerTwoPoints() {
+	int points = 0;
+		for(int a = 0; a<8; a++) {
+			for(int b = 0; b < 8; b++) {
+				if(currentBoard[a][b] == 2) {
+					points++;
+				}
+			}
+		}
+		return points;
+	}
+	public int PlayerOnePoints() {
+		int points = 0;
+		for(int a = 0; a<8; a++) {
+			for(int b = 0; b < 8; b++) {
+				if(currentBoard[a][b] == 1) {
+					points++;
+				}
+			}
+		}
+		return points;
 	}
 
 	//look at a column, row, or diagonal. If there is a piece that is the player's color is blocked by an opponent's color and there is no empty piece in between, placeable is true
