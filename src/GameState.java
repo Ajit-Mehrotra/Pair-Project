@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class GameState {
 	//double check if static is correct. I think it is. 
@@ -72,14 +73,75 @@ public class GameState {
 	// Should create an array for this that has a true and false for each player. This should be only a couple lines long
 	public boolean isPlaceable(Cell potentialCell) {
 
-		//use currentBoard
-	return true;
+		int x = potentialCell.getCol();
+		int y = potentialCell.getRow();
+		boolean placeable = false;
+		ArrayList<Cell> check = new ArrayList<Cell>();
+
+		if(potentialCell.getState() != 0) {
+			return false;
+		}
+
+		//up
+		for(int i=0;y-i>-1;i++) {
+			Cell checkCell = cellArray[x][y-i];
+			check.add(checkCell);
+		}
+
+		//down
+		for(int i=0;i+x<8&&i+y<8;i++) {
+
+		}
+		//right
+		for(int i=0;i+x<8&&i+y<8;i++) {
+
+		}
+		//left
+		for(int i=0;i+x<8&&i+y<8;i++) {
+
+		}
+		//up right
+		for(int i=0;i+x<8&&i+y<8;i++) {
+
+		}
+		//up left
+		for(int i=0;i+x<8 &&i+y<8;i++) {
+
+		}
+		//down left
+		for(int i=0;i+x<8&&i+y<8;i++) {
+
+		}
+		//down right
+		for(int i=0;i+x<8&&i+y<8;i++) {
+
+		}
+
 	}
-	
-	
-	
+
+	//look at a column, row, or diagonal. If there is a piece that is the player's color is blocked by an opponent's color and there is no empty piece in between, placeable is true
+
+	private boolean properArray(ArrayList<Cell> potentialAffected) {
+		boolean returnVal = true;
+		int startColor = potentialAffected.get(0).getState();
+		int otherColor;
+		if(startColor == 2) {
+			otherColor = 1;
+		}else {
+			otherColor = 2;
+		}
+		for(int i=1; i < potentialAffected.size()-1; i++) {
+			if(otherColor != potentialAffected.get(i).getState()) {
+				returnVal = false;
+			}
+		}
+		return returnVal;
+	}
+
+
+
 	public int PlayerTwoPoints() {
-	int points = 0;
+		int points = 0;
 		for(int a = 0; a<8; a++) {
 			for(int b = 0; b < 8; b++) {
 				if(currentBoard[a][b] == 2) {
