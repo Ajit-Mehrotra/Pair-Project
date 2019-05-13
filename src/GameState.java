@@ -51,15 +51,18 @@ public class GameState {
 	public void updateCellArray(int row, int col, int state){
 		if(state == 0) {
 			cellArray[row][col].setEmpty();
+			currentBoard[row][col] = 0;
 		} else if(state == 1) {
 			cellArray[row][col].setWhite();
+			currentBoard[row][col] = 1;
 		}else if(state == 2) {
 			cellArray[row][col].setBlack();
+			currentBoard[row][col] = 2;
 		}
 
 
 	}
-	private int playerTurn(boolean turn) {
+	public int playerTurn(boolean turn) {
 		if(turn) {
 			return 1; //return white int 
 		}else {
@@ -68,91 +71,9 @@ public class GameState {
 	}
 	// Should create an array for this that has a true and false for each player. This should be only a couple lines long
 	public boolean isPlaceable(Cell potentialCell) {
-		//potentialCell is the cell that the user is trying to use
-		int row = potentialCell.getRow();
-		int col = potentialCell.getCol();
 
-		/*if anything goes wrong, make sure to check over here for any intialization issues. 
-		It was saying for all of these variables that they might not have been intialized*/
-	
-
-		int playerTurn = playerTurn(turn);
-
-		//creates a new array and sets contents in that array equal to cellArray's states
-		for(int rw = 0; rw < 8; rw ++) {
-			for(int cl = 0; cl< 8; cl++) {
-				currentBoard[rw][cl] = cellArray[rw][cl].getState(); 
-			}
-		}
-
-
-		// REMEBER TO ADD THIS LINE OF CODE, IF THE STATUS OF THE POTENTIAL PIECE IS NOT EXMPTY, RETURN FALSE
-		if(potentialCell.getState() == 0 ) {
-
-      
-      // If it contains same piece vertically
-            for (int a = 0; a < 8; a++) {
-                if(row-1 < 0){
-                    if (currentBoard[a][col] == playerTurn &&  currentBoard[row+1][col] == playerTurn(!turn) ) {
-                        System.out.println("Row: " + row + " " + "Col: " + col );
-                        return true;
-                    }
-                }else if(row+1 > 7){
-                    if (currentBoard[a][col] == playerTurn &&  currentBoard[row-1][col] == playerTurn(!turn) ) {
-                        System.out.println("Row: " + row + " " + "Col: " + col );
-                        return true;
-                    }
-                }else{
-                    if (currentBoard[a][col] == playerTurn && (currentBoard[row-1][col] == playerTurn(!turn) || currentBoard[row+1][col] == playerTurn(!turn) )) {
-                        System.out.println("Row: " + row + " " + "Col: " + col );
-                        return true;
-                    }
-                }
-
-            }
-
-            for (int a = 0; a < 8; a++) {
-                if(col-1 < 0){
-                    if (currentBoard[row][a] == playerTurn &&  currentBoard[row][col+1] == playerTurn(!turn) ) {
-                        System.out.println("Row: " + row + " " + "Col: " + col );
-                        return true;
-                    }
-                }else if(col+1 > 7){
-                    if (currentBoard[row][a] == playerTurn &&  currentBoard[row][col-1] == playerTurn(!turn) ) {
-                        System.out.println("Row: " + row + " " + "Col: " + col );
-                        return true;
-                    }
-                }else{
-                    if (currentBoard[row][a] == playerTurn && (currentBoard[row][col+1] == playerTurn(!turn) || currentBoard[row][col-1] == playerTurn(!turn) )) {
-                        System.out.println("Row: " + row + " " + "Col: " + col );
-                        return true;
-                    }
-                }
-
-            }
-      
-			for(int a = 0; a < 8; a++) {
-				if(a < 7 && (row+a > 8 || col+a > 7)) {
-					if(currentBoard[row - (7-a)][col - (7-a)] == playerTurn(!turn)) {
-						return true;
-					}
-				}else if(row-a < 0 || col-a < 0) { //theoretically shouldn't go to this line as it 
-					//is always increasing until it is > 7 then it hits first if statement
-					if(currentBoard[row + (7-a)][col + (7-a)] == playerTurn(!turn)) {
-						return true;
-					}
-				}else {
-					if( (currentBoard[row + a][col + a] == playerTurn(!turn)) ) {
-						return true;
-					}
-				}
-
-			}
-			return false;
-		}else {
-			return false;
-		}
-	
+		//use currentBoard
+	return true;
 	}
 	
 	
